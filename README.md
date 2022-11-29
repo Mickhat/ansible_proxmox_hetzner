@@ -10,6 +10,7 @@ I made this project just for fun, it allows you to create a proxmox host on Hetz
  * Autoinstall OPNsense (still in progress..)
  * Create Backup of OPNsense after setup
  * Create Cloud-INIT Images
+ * Install Proxmox Backup Server
 
 #### Requirements
   
@@ -17,6 +18,7 @@ I made this project just for fun, it allows you to create a proxmox host on Hetz
   * Tested on Hetzner Bare Metal EX43 at HEL1 - last run 19.10.2022
 
 #### Variables
+ * `hetzner_pbs_setup` [default: `true` ]: Install Proxmox Backup Server 
  * `hetzner_pve_autorescue` [default: `true` ]: Set rescue mode automaticly and generate SSH Key if not present
  * `hetzner_pve_hetzner_api_user` [default: `secret` ]: Hetzner API user
  * `hetzner_pve_hetzner_api_pass` [default: `secret` ]: Hetzner API password

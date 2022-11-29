@@ -19,6 +19,9 @@ hetzner_pve_acme_domain: vmhost.example.com
 #hetzner_pve_acme_server: https://acme-v02.api.letsencrypt.org/directory ## PROD
 hetzner_pve_acme_server: https://acme-staging-v02.api.letsencrypt.org/directory ## Stage
 
+### INSTALL PBS
+hetzner_pbs_setup_opnsense: true
+
 ### Setup StorageBox as Mount
 hetzner_pve_storagebox_setup: true
 hetzner_pve_storagebox_server:
@@ -30,11 +33,14 @@ hetzner_pve_storagebox_server:
 hetzner_pve_setup_opnsense: true
 hetzner_pve_setup_opnsense_fwd_proxmox_gui_port: 48604
 hetzner_pve_setup_opnsense_fwd_proxmox_ssh_port: 48622
+hetzner_pve_setup_opnsense_fwd_proxmox_pbs_gui_port: 48605
 hetzner_pve_setup_opnsense_ssh_port: 49022
 hetzner_pve_setup_opnsense_force: true
 hetzner_pve_setup_opnsense_enable_ipv6: false
 hetzner_pve_setup_opnsense_settings_lan_dhcpd: true
 hetzner_pve_setup_opnsense_user: ansible
+
+hetzner_pve_setup_opnsense_root_pass: secret
 
 hetzner_pve_network_lan_subnet: "24"
 hetzner_pve_network_lan_ip: "192.168.49.2"
@@ -83,7 +89,7 @@ opn_user:
       - key: uid
         value: 2000
       - key: authorizedkeys
-        b64_value: "{{ hetzner_pve_ssh_keys.0 }} }}"
+        b64_value: "{{ hetzner_pve_ssh_keys.0 }}"
 
 opn_group:
   - name: admins
@@ -100,6 +106,9 @@ hetzner_pve_custom_packages:
   - tcpdump
   - zsh
   - git
+
+hetzner_pbs_custom_packages:
+  - proxmox-backup-server
 
 hetzner_pve_cloud_images_setup: true
 hetzner_pve_cloud_images:

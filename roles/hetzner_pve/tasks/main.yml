@@ -1,4 +1,19 @@
 ---
+- name: Check for SSH Port
+  wait_for:
+    host: "{{ inventory_hostname }}"
+    port: "{{ hetzner_pve_setup_opnsense_fwd_proxmox_ssh_port }}"
+    timeout: 5
+  ignore_errors: yes
+  register: custom_ssh_port
+  delegate_to: localhost
+
+- name: set ansible_port
+  set_fact:
+    ansible_port: "{{ hetzner_pve_setup_opnsense_fwd_proxmox_ssh_port }}"
+  when: not custom_ssh_port.failed
+
+- ansible.builtin.setup:
 
 - include_tasks: 00_rescue.yml
   when: hetzner_pve_autorescue
@@ -23,7 +38,7 @@
 - include_tasks: 08_cloudimages_setup.yml
   when: hetzner_pve_cloud_images_setup
 
-- include_tasks: 09_opnsense_prepare.yml
-  when: hetzner_pve_setup_opnsense
+- include_tasks: 10_pbs_setup.yml
+  when: hetzner_pbs_setup_opnsense
 
 
