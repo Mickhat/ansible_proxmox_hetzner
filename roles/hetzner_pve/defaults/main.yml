@@ -20,7 +20,7 @@ hetzner_pve_acme_domain: vmhost.example.com
 hetzner_pve_acme_server: https://acme-staging-v02.api.letsencrypt.org/directory ## Stage
 
 ### INSTALL PBS
-hetzner_pbs_setup_opnsense: true
+hetzner_pbs_setup: true
 
 ### Setup StorageBox as Mount
 hetzner_pve_storagebox_setup: true

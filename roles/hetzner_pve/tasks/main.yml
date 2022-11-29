@@ -39,6 +39,6 @@
   when: hetzner_pve_cloud_images_setup
 
 - include_tasks: 10_pbs_setup.yml
-  when: hetzner_pbs_setup_opnsense
+  when: hetzner_pbs_setup
 
 
