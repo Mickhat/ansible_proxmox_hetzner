@@ -38,6 +38,9 @@
 - include_tasks: 08_cloudimages_setup.yml
   when: hetzner_pve_cloud_images_setup
 
+- include_tasks: 09_opnsense_prepare.yml
+  when: hetzner_pve_setup_opnsense
+
 - include_tasks: 10_pbs_setup.yml
   when: hetzner_pbs_setup
 
